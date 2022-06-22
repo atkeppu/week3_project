@@ -8,14 +8,15 @@ if (document.readyState !== "loading") {
   });
 }
 function initializeCode() {
-  for (let i = 0; i < 5; i++) {  
+  for (let i = 0; i < 6; i++) {  
     loadImage()
   }
 }
 
 async function loadImage()
 {
-  let url ="https://dog.ceo/api/breeds/image/random";
+ // let url ="https://dog.ceo/api/breeds/image/random";
+ let url ="https://dog.ceo/api/breed/akita/images/random";
   let response = await fetch(url);
  // console.log(response);
   let images = await response.json();
@@ -82,7 +83,9 @@ function addElement(imageSrc,breed,wikitext)
   const newDiv4 = document.createElement("div");
   newDiv4.className = 'img-container'; 
   const newDiv5 = document.createElement("img");
-  newDiv5.className = 'wiki-img'; newDiv5.setAttribute('src',imageSrc);
+
+
+  newDiv5.className   = 'wiki-img'; newDiv5.setAttribute('src',imageSrc);
   newDiv4.appendChild(newDiv5);
   newDiv2.appendChild(newDiv4);
 
@@ -95,8 +98,15 @@ function addElement(imageSrc,breed,wikitext)
   newDiv.appendChild(newContent);
   */
   // add the newly created element and its content into the DOM
-  const currentDiv = document.getElementById("container");
-  currentDiv.appendChild(newDiv);
+
+  //const currentDiv = document.getElementById("container");
+  //currentDiv.appendChild(newDiv);
+
+   
+   const currentDiv =document.getElementsByClassName("container")[0]; 
+   //console.log("111: " +currentDiv);
+   currentDiv.appendChild(newDiv);
+
   //document.body.appendChild(newDiv, currentDiv);
   //newLI.appendChild(newDiv);
  // document.body.insertBefore(newLI, currentDiv);
